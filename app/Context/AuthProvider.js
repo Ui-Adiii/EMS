@@ -5,7 +5,7 @@ import { getLocalStorage } from '../Components/index';
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [userData, setuserData] = useState({ employees: [], admin: null });
+  const [userData, setuserData] = useState({ employees: [], admin: [] });
 
   useEffect(() => {
     const { employees, admin } = getLocalStorage();
@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={JSON.stringify(userData)}>
+    <AuthContext.Provider value={userData}>
       {children}
     </AuthContext.Provider>
   );
