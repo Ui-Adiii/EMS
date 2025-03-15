@@ -10,12 +10,12 @@ import TaskList from "./TaskList/TaskList"
 import { getLocalStorage, setLocalStorage } from "../utils/LocalStrorage"
 import AcceptTask from "./TaskList/AcceptTask"
 import FailedTask from "./TaskList/FailedTask"
-import ComleteTask from "./TaskList/ComleteTask"
+import CompleteTask from "./TaskList/CompleteTask"
 import NewTask from "./TaskList/NewTask"
 
 export  {
     FailedTask,
-    ComleteTask,
+    CompleteTask,
     NewTask,
     AcceptTask,
     getLocalStorage,

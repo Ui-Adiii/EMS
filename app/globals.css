@@ -11,3 +11,6 @@ html,body{
 .taskList::-webkit-scrollbar{
   display: none;
 }
+button:hover{
+  cursor: pointer;
+}

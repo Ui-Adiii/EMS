@@ -1,7 +1,7 @@
 import React from 'react'
 
 const TaskListNumber = ({data}) => {
-  console.log(data)
+  // console.log(data)
   return (
     <div className="flex  justify-between gap-4 ">
       <div className="mt-10 py-6 px-9 rounded-xl w-[49%] bg-sky-500">

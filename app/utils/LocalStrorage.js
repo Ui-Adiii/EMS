@@ -12,7 +12,7 @@ const employees = [
     },
     tasks: [
       {
-        title: "Task 1",
+        title: "Monthly Report",
         description: "Complete the monthly report",
         date: "2025-03-15",
         category: "Reporting",
@@ -22,7 +22,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 2",
+        title: "Budget Analysis",
         description: "Prepare budget analysis",
         date: "2025-03-16",
         category: "Finance",
@@ -32,7 +32,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 3",
+        title: "Client Meeting",
         description: "Attend client meeting",
         date: "2025-03-17",
         category: "Client Work",
@@ -56,7 +56,7 @@ const employees = [
     },
     tasks: [
       {
-        title: "Task 4",
+        title: "Team Meeting",
         description: "Prepare for team meeting",
         date: "2025-03-18",
         category: "Meeting Preparation",
@@ -66,7 +66,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 5",
+        title: "Marketing Materials",
         description: "Design marketing materials",
         date: "2025-03-19",
         category: "Marketing",
@@ -90,7 +90,7 @@ const employees = [
     },
     tasks: [
       {
-        title: "Task 6",
+        title: "Client Proposal",
         description: "Update client proposal",
         date: "2025-03-20",
         category: "Client Work",
@@ -100,7 +100,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 7",
+        title: "Quarterly Report",
         description: "Prepare quarterly report",
         date: "2025-03-21",
         category: "Reporting",
@@ -110,7 +110,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 8",
+        title: "Sales Strategy",
         description: "Review sales strategy",
         date: "2025-03-22",
         category: "Sales",
@@ -134,7 +134,7 @@ const employees = [
     },
     tasks: [
       {
-        title: "Task 9",
+        title: "Marketing Campaign",
         description: "Create a marketing campaign",
         date: "2025-03-23",
         category: "Marketing",
@@ -144,7 +144,7 @@ const employees = [
         failed: true,
       },
       {
-        title: "Task 10",
+        title: "Event Planning",
         description: "Plan team-building event",
         date: "2025-03-24",
         category: "HR",
@@ -154,7 +154,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 11",
+        title: "Website Prototype",
         description: "Design website prototype",
         date: "2025-03-25",
         category: "Design",
@@ -178,7 +178,7 @@ const employees = [
     },
     tasks: [
       {
-        title: "Task 12",
+        title: "Business Research",
         description: "Research new business trends",
         date: "2025-03-26",
         category: "Research",
@@ -188,7 +188,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 13",
+        title: "SEO Optimization",
         description: "Complete SEO optimization",
         date: "2025-03-27",
         category: "SEO",
@@ -198,7 +198,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 14",
+        title: "Performance Review",
         description: "Prepare annual performance review",
         date: "2025-03-28",
         category: "HR",
@@ -208,7 +208,7 @@ const employees = [
         failed: false,
       },
       {
-        title: "Task 15",
+        title: "Product Improvement",
         description: "Improve product development process",
         date: "2025-03-29",
         category: "Product",
@@ -220,15 +220,21 @@ const employees = [
     ],
   },
 ];
-
 const admin = [
   {
+    name:"Owner",
     id: 1,
     email: "admin@example.com",
     password: "123",
   },
-];
-export const setLocalStorage = ()=>{
+  {
+    name:"god",
+    id:2,
+    email:"god@god.com",
+    password:"123"
+  }
+]
+  export const setLocalStorage = ()=>{
     localStorage.setItem("employees",JSON.stringify(employees));
     localStorage.setItem("admin",JSON.stringify(admin));
 }
