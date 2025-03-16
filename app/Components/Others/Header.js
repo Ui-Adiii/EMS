@@ -1,5 +1,3 @@
-import { AuthContext } from "@/app/Context/AuthProvider";
-import Link from "next/link";
 import React, { useContext } from "react";
 
 const Header = (val) => {
@@ -7,7 +5,6 @@ const Header = (val) => {
     localStorage.setItem('loggedInUser',"")
     window.location.reload() //page reloading
   }
-  const data=useContext(AuthContext)
   return (
     <>
       <div className="flex items-end justify-between">

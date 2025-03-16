@@ -9,12 +9,9 @@ const page = () => {
   const [loggedInUser, setloggedInUser] = useState(null)
   const [loading, setLoading] = useState(true);
 
+ 
   useEffect(() => {
-    setLocalStorage() //Setting the data
-  }, [])
-  // localStorage.clear()
-  useEffect(() => {
-    //  const loggedInData=localStorage.setItem('loggedInUser',"")
+    // setLocalStorage()
     const loggedInData=localStorage.getItem('loggedInUser')
     if(loggedInData){
       const userData=JSON.parse(loggedInData)

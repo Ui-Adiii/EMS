@@ -12,8 +12,9 @@ import AcceptTask from "./TaskList/AcceptTask"
 import FailedTask from "./TaskList/FailedTask"
 import CompleteTask from "./TaskList/CompleteTask"
 import NewTask from "./TaskList/NewTask"
-
+import AuthContext from "../Context/AuthProvider"
 export  {
+    AuthContext,
     FailedTask,
     CompleteTask,
     NewTask,
