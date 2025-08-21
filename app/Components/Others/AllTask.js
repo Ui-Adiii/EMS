@@ -5,11 +5,11 @@ const AllTask = () => {
   return (
     <div className=" bg-[#1c1c1c] p-5 mt-2 rounded-md ">
       <div className="bg-red-400 mb-2 text-center  py-2 px-4 flex justify-between">
-        <h2 className="w-1/5 text-lg font-medium">Employee Name</h2>
-        <h3 className="w-1/5 text-lg font-medium">New Task</h3>
-        <h5 className="w-1/5 text-lg font-medium">Active Task</h5>
-        <h5 className="w-1/5 text-lg font-medium">Complete Task</h5>
-        <h5 className="w-1/5 text-lg font-medium">Failed Task</h5>
+        <h2 className="w-1/5 text-sm  md:text-lg  font-normal md:font-medium">Employee Name</h2>
+        <h3 className="w-1/5 text-sm  md:text-lg  font-normal md:font-medium">New Task</h3>
+        <h5 className="w-1/5 text-sm  md:text-lg  font-normal md:font-medium">Active Task</h5>
+        <h5 className="w-1/5 text-sm  md:text-lg  font-normal md:font-medium">Complete Task</h5>
+        <h5 className="w-1/5 text-sm  md:text-lg  font-normal md:font-medium">Failed Task</h5>
       </div>
       
         {authData.employees.map((elem, idx) => {

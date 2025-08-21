@@ -4,12 +4,7 @@ const employees = [
     email: "e@e.com",
     password: "123",
     name: "Aditya",
-    taskCounts: {
-      active: 2,
-      newTask: 2,
-      completed: 1,
-      failed: 0,
-    },
+
     tasks: [
       {
         title: "Monthly Report",
@@ -48,12 +43,7 @@ const employees = [
     email: "employee2@example.com",
     password: "123",
     name: "Krish",
-    taskCounts: {
-      active: 1,
-      newTask: 1,
-      completed: 1,
-      failed: 0,
-    },
+   
     tasks: [
       {
         title: "Team Meeting",
@@ -82,12 +72,7 @@ const employees = [
     email: "employee3@example.com",
     password: "123",
     name: "Paresh",
-    taskCounts: {
-      active: 2,
-      newTask: 2,
-      completed: 1,
-      failed: 0,
-    },
+
     tasks: [
       {
         title: "Client Proposal",
@@ -118,6 +103,51 @@ const employees = [
         newTask: false,
         completed: true,
         failed: false,
+      },{
+        title: "Sales Strategy",
+        description: "Review sales strategy",
+        date: "2025-03-22",
+        category: "Sales",
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+      },{
+        title: "Sales Strategy",
+        description: "Review sales strategy",
+        date: "2025-03-22",
+        category: "Sales",
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+      },{
+        title: "Sales Strategy",
+        description: "Review sales strategy",
+        date: "2025-03-22",
+        category: "Sales",
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+      },{
+        title: "Sales Strategy",
+        description: "Review sales strategy",
+        date: "2025-03-22",
+        category: "Sales",
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
+      },{
+        title: "Sales Strategy",
+        description: "Review sales strategy",
+        date: "2025-03-22",
+        category: "Sales",
+        active: false,
+        newTask: false,
+        completed: true,
+        failed: false,
       },
     ],
   },
@@ -126,12 +156,7 @@ const employees = [
     name: "Pradeep",
     email: "employee4@example.com",
     password: "123",
-    taskCounts: {
-      active: 2,
-      newTask: 2,
-      completed: 1,
-      failed: 1,
-    },
+
     tasks: [
       {
         title: "Marketing Campaign",
@@ -170,12 +195,7 @@ const employees = [
     name: "Subha",
     email: "employee5@example.com",
     password: "123",
-    taskCounts: {
-      active: 3,
-      newTask: 3,
-      completed: 1,
-      failed: 0,
-    },
+
     tasks: [
       {
         title: "Business Research",
@@ -234,7 +254,7 @@ const admin = [
     password:"123"
   }
 ]
-  export const setLocalStorage = ()=>{
+export const setLocalStorage = ()=>{
     localStorage.setItem("employees",JSON.stringify(employees));
     localStorage.setItem("admin",JSON.stringify(admin));
 }
