@@ -1,4 +1,4 @@
-import { AuthProvider } from "./Components/index";
+import { AuthProvider } from "../Components/index";
 import "./globals.css";
 export const metadata = {
   title: "Employee Management System",

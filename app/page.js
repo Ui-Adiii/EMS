@@ -1,7 +1,7 @@
 "use client"
 import React, {  useContext, useEffect, useState } from 'react'
-import {Login,EmployeeDahBoard,AdminDashBoard,setLocalStorage,getLocalStorage} from '../app/Components/index'
-import { AuthContext } from './Context/AuthProvider'
+import {Login,EmployeeDahBoard,AdminDashBoard,setLocalStorage,getLocalStorage} from '../Components/index'
+import { AuthContext } from '../Context/AuthProvider'
 const page = () => {
   const authData=useContext(AuthContext)
   
