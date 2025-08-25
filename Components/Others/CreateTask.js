@@ -18,7 +18,6 @@ const CreateTask = () => {
     const { name, value } = e.target;
     setTask((prevTask) => ({
       ...prevTask,
-
       [name]: value,
     }));
   };
@@ -26,34 +25,6 @@ const CreateTask = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(task);
-
-    // Get existing employees from localStorage
-    const existingEmployees =
-      JSON.parse(localStorage.getItem("employees")) || [];
-
-    // Find the employee to assign the task to
-    const updatedEmployees = existingEmployees.map((employee) => {
-      if (employee.name === task.assignTo) {
-        // Add the new task to the employee's tasks
-        return {
-          ...employee,
-          tasks: [...employee.tasks, task],
-        };
-      }
-      return employee;
-    });
-
-    // Save the updated employees back to localStorage
-    localStorage.setItem("employees", JSON.stringify(updatedEmployees));
-
-    // Reset the form
-    setTask({
-      title: "",
-      description: "",
-      date: "",
-      assignTo: "",
-      category: "",
-    });
   };
 
   return (

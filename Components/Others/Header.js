@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 
 const Header = (val) => {
   const logOutUser=()=>{
-    localStorage.setItem('loggedInUser',"")
-    window.location.reload() //page reloading
+  
   }
   return (
     <>

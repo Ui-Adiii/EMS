@@ -4,13 +4,6 @@ import { TaskList, TaskListNumber, Header } from '../index';
 
 const EmployeeDahBoard = ({ employeeData }) => {
   const [employee, setEmployee] = useState(null);
-  useEffect(() => {
-    const existingEmployees = JSON.parse(localStorage.getItem('employees')) ;
-    
-    const matchedEmployee = existingEmployees.find(emp => emp.id === employeeData.id);
-    setEmployee(matchedEmployee);
-    console.log(matchedEmployee.tasks)
-  }, [employeeData.id]);
 
   if (!employee) {
     return <div>Loading...</div>;

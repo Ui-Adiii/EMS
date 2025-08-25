@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ComleteTask = ({data}) => {
+const CompleteTask = ({data}) => {
     return (
       <div className="flex-shrink-0 flex flex-col justify-between p-5 h-full w-[300px] bg-blue-400 rounded-xl">
         <div className="flex align-center justify-between ">
@@ -24,4 +24,4 @@ const ComleteTask = ({data}) => {
     );
 }
 
-export default ComleteTask
+export default CompleteTask
