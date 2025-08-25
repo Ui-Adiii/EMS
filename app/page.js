@@ -1,26 +1,42 @@
 "use client"
 import React, {  useEffect, useState } from 'react'
 import {Login,EmployeeDahBoard,AdminDashBoard} from '../Components/index'
-import Providers from '../Components/Providers'
-import { ToastContainer } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
+import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginStart, loginSuccess, loginFailed } from '@/store/features/userSlice'
 const page = () => {
-  const [user, setuser] = useState(
-    
-  )
-
- 
+  const {user,loading,error,isLoggedIn}= useSelector((state)=>state.user)
+  const dispatch=useDispatch();
   useEffect(() => {
-    
-  }, [user])
-  
+    async function fetchUserData() {
+      dispatch(loginStart());
+      try {
+        const response = await axios.get('/api/user/me');
+        if (response.data.success) {
+          dispatch(loginSuccess(response.data.user));
+        }
+        else{
+          dispatch(loginFailed(response.data.message));
+          toast.error(error)
+        }
+        
+      } catch (error) {
+        dispatch(loginFailed(error.message));
+        toast.error(error);
+      }
+    }
+    fetchUserData();
+  }, [])
+  console.log(user)
   
   return (
-    <Providers>   
-      <ToastContainer/>
-        {!user && <Login setuser={setuser} /> }
+    <>
+        <ToastContainer/>
+        {!user && <Login  /> }
         {( user && user?.role == 'admin' )&& <AdminDashBoard data={user}/> } 
-        {(user && user?.role == 'employee')&& <EmployeeDahBoard employeeData={loggedInUser}/> } 
-    </Providers>
+        {(user && user?.role == 'user')&& <EmployeeDahBoard employee={user}/> } 
+    </>
   )
 }
 

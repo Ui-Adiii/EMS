@@ -1,31 +1,35 @@
 "use client";
-import { loginUser } from "@/app/actions/user/user.action";
+import { loginStart, loginSuccess, loginFailed } from "@/store/features/userSlice";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
-const Login = ({setuser}) => {
+const Login = () => {
+  const { loading, error, isLoggedIn } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const router = useRouter();
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const submitHanler = async (event) => {
+    event.preventDefault();
+    dispatch(loginStart());
     try {
       event.preventDefault();
      const response = await axios.post("/api/user/login", {email,password});
-     console.log(response);
       if(response.data.success){
-        setuser(response.data.user);
+        dispatch(loginSuccess(response.data.user));
         toast.success(response.data.message);
-        setemail("");
-        setpassword("");
         router.push("/");
       }
       else{
-        toast.error(response.data.message);
+        dispatch(loginFailed(response.data.message));
+        toast.error(error)
       }
+      
     } catch (error) {
-      toast.error(error.message);
+      dispatch(loginFailed(error.message));
+      toast.error(error);
     }
   };
 

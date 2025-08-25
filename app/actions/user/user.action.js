@@ -95,4 +95,55 @@ const loginUser = async (formData) => {
     };
   }
 };
-export { registerUser, loginUser };
+
+const logOut = async ()=>{
+  try {
+    const cookieStore = cookies();
+    cookieStore.set("access_token", "", {
+      httpOnly: true,
+      path: "/",
+      maxAge: 0,
+    });
+    cookieStore.set("role", "", {
+      httpOnly: true,
+      path: "/",
+      maxAge: 0,
+    });
+    return {
+      user:null,
+      message:"Logout successful",
+      success:true
+    }
+  } catch (error) {
+    return {
+      message:error.message,
+      success:false
+    }
+  }
+}
+
+const getUser = async (userId) => {
+  try {
+    await connectDB();
+    const user = await User.findById(userId);
+    if (!user) {
+      return {
+        message: "User not found",
+        success: false,
+      };
+    }
+    const plainUser = JSON.parse(JSON.stringify(user));
+    return {
+      message: "User retrieved successfully",
+      success: true,
+      user: plainUser,
+    };
+  } catch (error) {
+    return {
+      message: error.message,
+      success: false,
+    };
+  }
+};
+
+export { registerUser, loginUser, logOut,getUser };

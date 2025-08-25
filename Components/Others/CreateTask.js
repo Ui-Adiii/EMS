@@ -24,7 +24,6 @@ const CreateTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(task);
   };
 
   return (
