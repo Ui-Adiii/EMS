@@ -9,7 +9,10 @@ const userMiddleware = async (req) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.userId = decoded.id;
-    return NextResponse.next();
+    return NextResponse.json({
+      success:true,
+      message:"User authenticated successfully"
+    });
   } catch (error) {
     return NextResponse.json({
         message:error.message,

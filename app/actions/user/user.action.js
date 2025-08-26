@@ -122,7 +122,7 @@ const logOut = async ()=>{
   }
 }
 
-const getUser = async (userId) => {
+const getCurrentUser = async (userId) => {
   try {
     await connectDB();
     const user = await User.findById(userId);
@@ -146,4 +146,20 @@ const getUser = async (userId) => {
   }
 };
 
-export { registerUser, loginUser, logOut,getUser };
+const getUsersByRole= async(role="user")=>{
+  try {
+    const users = await User.find({role});
+    return {
+      users,
+      message:"fetched users",
+      success:true
+    }
+  } catch (error) {
+    return {
+      message:error.message,
+      success:false
+    }
+  }
+}
+
+export { registerUser, loginUser, logOut,getCurrentUser ,getUsersByRole};

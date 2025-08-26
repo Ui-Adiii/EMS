@@ -1,9 +1,11 @@
 "use server";
-import jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import userMiddleware from "./user.middleware";
 const adminMiddleware = async (req) => {
-  userMiddleware(req);
+  const auth = await userMiddleware(req);
+  if (!auth.success) {
+    return NextResponse.json({ message: "Unauthorized", success: false });
+  }
   if (!req.userId) {
     return NextResponse.json({ message: "Unauthorized", success: false });
   }
@@ -18,6 +20,10 @@ const adminMiddleware = async (req) => {
         success: false
       });
     }
+    return NextResponse.json({
+      success: true,
+      message: "User is admin"
+    });
   } catch (error) {
     return NextResponse.json({
       message: error.message,

@@ -16,7 +16,6 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/user/register", user);
-      console.log(response);
       if(response.data.success){
         setuser({
           name: "",

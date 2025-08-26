@@ -1,9 +1,12 @@
 import { NextResponse } from "next/server";
 import userMiddleware from "@/middleware/user.middleware";
-import { getUser } from "@/app/actions/user/user.action";
+import { getCurrentUser } from "@/app/actions/user/user.action";
 
 export async function GET(req) {
-   userMiddleware(req)
-  const response = await getUser(req.userId);
+  const auth = await userMiddleware(req);
+  if (!auth.success) {
+    return NextResponse.json({ message: "Unauthorized", success: false });
+  }
+  const response = await getCurrentUser(req.userId);
   return NextResponse.json(response);
 }

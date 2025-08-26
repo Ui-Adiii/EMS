@@ -8,10 +8,7 @@ const CreateTask = () => {
     date: "",
     assignTo: "",
     category: "",
-    active: false,
     newTask: true,
-    completed: false,
-    failed: false,
   });
 
   const handleChange = (e) => {
@@ -24,6 +21,7 @@ const CreateTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(task)
   };
 
   return (
@@ -66,7 +64,7 @@ const CreateTask = () => {
               <input
                 type="text"
                 name="assignTo"
-                value={task.assignTo}
+                value={task.assignTo.toLowerCase()}
                 onChange={handleChange}
                 placeholder="Employee Name"
                 className="mb-5 text-sm py-3 md:py-2 px-5 md:px-3   w-full md:w-4/5 rounded outline-none border-2 border-gray-200"
