@@ -1,6 +1,7 @@
 "use client";
 import axios from "axios";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const CreateTask = () => {
   const [task, setTask] = useState({
@@ -22,10 +23,21 @@ const CreateTask = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-
     const response=await axios.post("/api/task/create", task);
-    console.log(response.data)
-
+    if(response.data.success){
+      toast.success(response.data.message)
+      setTask({
+        title: "",
+        description: "",
+        date: "",
+        assignTo: "",
+        category: "",
+        status: "newTask",
+      })
+    }
+    else{
+      toast.error(response.data.message)
+    }
   };
 
   return (

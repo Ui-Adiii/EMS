@@ -35,7 +35,6 @@ const createTask = async (task) => {
       category,
       status,
     });
-    console.log(task);
     if (!task) {
       return {
         message: "Task creation failed",

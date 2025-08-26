@@ -1,17 +1,16 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TaskList, TaskListNumber, Header } from '../index';
 
 const EmployeeDahBoard = ({ employee }) => {
   if (!employee) {
     return <div>Loading...</div>;
   }
-  console.log(employee)
   const taskCounts = {
-    newTask: employee.tasks.filter(task => task.newTask).length,
-    active: employee.tasks.filter(task => task.active).length,
-    completed: employee.tasks.filter(task => task.completed).length,
-    failed: employee.tasks.filter(task => task.failed).length,
+    newTask: employee.tasks.filter(task => task.status === 'newTask').length,
+    active: employee.tasks.filter(task => task.status === 'active').length,
+    completed: employee.tasks.filter(task => task.status === 'completed').length,
+    failed: employee.tasks.filter(task => task.status === 'failed').length,
   };
   return (
     <>

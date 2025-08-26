@@ -51,7 +51,7 @@ const loginUser = async (formData) => {
         success: false,
       };
     }
-    const user = await User.findOne({ email }).select("+password");
+    const user = await User.findOne({ email }).select("+password").populate("tasks");
     if (!user) {
       return {
         message: "User not found",
@@ -125,7 +125,7 @@ const logOut = async ()=>{
 const getUserById = async (userId) => {
   try {
     await connectDB();
-    const user = await User.findById(userId);
+    const user = await User.findById(userId).populate("tasks");
     if (!user) {
       return {
         message: "User not found",
@@ -148,7 +148,7 @@ const getUserById = async (userId) => {
 
 const getUsersByRole= async(role="user")=>{
   try {
-    const users = await User.find({role});
+    const users = await User.find({role}).populate("tasks");
     return {
       users,
       message:"fetched users",
