@@ -122,7 +122,7 @@ const logOut = async ()=>{
   }
 }
 
-const getCurrentUser = async (userId) => {
+const getUserById = async (userId) => {
   try {
     await connectDB();
     const user = await User.findById(userId);
@@ -162,4 +162,4 @@ const getUsersByRole= async(role="user")=>{
   }
 }
 
-export { registerUser, loginUser, logOut,getCurrentUser ,getUsersByRole};
+export { registerUser, loginUser, logOut,getUserById ,getUsersByRole};

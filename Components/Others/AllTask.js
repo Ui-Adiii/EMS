@@ -1,6 +1,8 @@
 "use client"
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React from "react";
 const AllTask = ({employees}) => {
+  const router = useRouter();
   return (
     <div className=" bg-[#1c1c1c] p-5 mt-2 rounded-md ">
       <div className="bg-red-400 mb-2 text-center  py-2 px-4 flex justify-between">
@@ -15,7 +17,8 @@ const AllTask = ({employees}) => {
           return (
             <div
               key={idx}
-              className="border-2 border-emerald-400 mb-2 text-center  py-2 px-4 flex justify-between"
+              onClick={() => router.push(`/${elem._id}`)}
+              className="border-2 border-emerald-400 mb-2 text-center cursor-pointer py-2 px-4 flex justify-between"
             >
               <h2 className="w-1/5 text-lg font-medium ">{elem.name }</h2>
               <h3 className="w-1/5 text-lg font-medium" style={{ color: "blue" }}>

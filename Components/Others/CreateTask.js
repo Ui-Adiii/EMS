@@ -1,4 +1,5 @@
 "use client";
+import axios from "axios";
 import React, { useState } from "react";
 
 const CreateTask = () => {
@@ -8,7 +9,7 @@ const CreateTask = () => {
     date: "",
     assignTo: "",
     category: "",
-    newTask: true,
+    status: "newTask",
   });
 
   const handleChange = (e) => {
@@ -19,9 +20,12 @@ const CreateTask = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(task)
+
+    const response=await axios.post("/api/task/create", task);
+    console.log(response.data)
+
   };
 
   return (
@@ -64,7 +68,7 @@ const CreateTask = () => {
               <input
                 type="text"
                 name="assignTo"
-                value={task.assignTo.toLowerCase()}
+                value={task.assignTo}
                 onChange={handleChange}
                 placeholder="Employee Name"
                 className="mb-5 text-sm py-3 md:py-2 px-5 md:px-3   w-full md:w-4/5 rounded outline-none border-2 border-gray-200"

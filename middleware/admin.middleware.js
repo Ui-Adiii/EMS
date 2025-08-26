@@ -20,10 +20,10 @@ const adminMiddleware = async (req) => {
         success: false
       });
     }
-    return NextResponse.json({
+    return {
       success: true,
       message: "User is admin"
-    });
+    }
   } catch (error) {
     return NextResponse.json({
       message: error.message,

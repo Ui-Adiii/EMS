@@ -1,6 +1,6 @@
 import Login from "./Auth/Login"
 import AdminDashBoard from "./DashBoard/AdminDashBoard"
-import EmployeeDahBoard from "./DashBoard/EmployeeDahBoard"
+import EmployeeDahBoard from "./DashBoard/EmployeeDashBoard"
 import AllTask from "./Others/AllTask"
 import CreateTask from "./Others/CreateTask"
 import Header from "./Others/Header"

@@ -23,6 +23,7 @@ const taskSchema = new mongoose.Schema({
     status:{
         type: String,
         enum: ["active", "newTask", "completed","failed"],
+        default: "newTask"
     }
 } ,{timestamps:true})
 const Task = mongoose.models.Task || mongoose.model("Task", taskSchema);

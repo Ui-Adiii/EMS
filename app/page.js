@@ -28,7 +28,6 @@ const page = () => {
     }
     fetchUserData();
   }, [])
-  console.log(user)
   
   return (
     <>
