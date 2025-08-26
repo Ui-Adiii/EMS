@@ -1,8 +1,8 @@
 "use server";
-import User from "@/models/user.model";
+import { User } from "@/models";
 import { cookies } from "next/headers";
 import bcrypt from "bcrypt";
-const { connectDB } = require("@/utils/connectDB");
+import { connectDB } from "@/utils/connectDB";
 import jwt from "jsonwebtoken";
 const registerUser = async (formData) => {
   try {
@@ -148,6 +148,7 @@ const getUserById = async (userId) => {
 
 const getUsersByRole= async(role="user")=>{
   try {
+    await connectDB();
     const users = await User.find({role}).populate("tasks");
     return {
       users,

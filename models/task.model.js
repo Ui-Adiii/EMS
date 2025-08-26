@@ -27,4 +27,10 @@ const taskSchema = new mongoose.Schema({
     }
 } ,{timestamps:true})
 const Task = mongoose.models.Task || mongoose.model("Task", taskSchema);
+
+// Ensure the model is properly registered
+if (!mongoose.models.Task) {
+    mongoose.model("Task", taskSchema);
+}
+
 export default Task;

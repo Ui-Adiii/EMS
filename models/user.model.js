@@ -31,4 +31,10 @@ const userSchema = new mongoose.Schema({
     ]
 },{timestamps:true})
 const User = mongoose.models.User || mongoose.model("User", userSchema);
+
+// Ensure the model is properly registered
+if (!mongoose.models.User) {
+    mongoose.model("User", userSchema);
+}
+
 export default User;
