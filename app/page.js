@@ -8,24 +8,24 @@ import { loginStart, loginSuccess, loginFailed } from '@/store/features/userSlic
 const page = () => {
   const {user,loading,error,isLoggedIn}= useSelector((state)=>state.user)
   const dispatch=useDispatch();
-  useEffect(() => {
-    async function fetchUserData() {
-      dispatch(loginStart());
-      try {
-        const response = await axios.get('/api/user/me');
-        if (response.data.success) {
-          dispatch(loginSuccess(response.data.user));
-        }
-        else{
-          dispatch(loginFailed(response.data.message));
-          toast.error(error)
-        }
-        
-      } catch (error) {
-        dispatch(loginFailed(error.message));
-        toast.error(error);
+  async function fetchUserData() {
+    dispatch(loginStart());
+    try {
+      const response = await axios.get('/api/user/me');
+      if (response.data.success) {
+        dispatch(loginSuccess(response.data.user));
       }
+      else{
+        dispatch(loginFailed(response.data.message));
+        toast.error(error)
+      }
+      
+    } catch (error) {
+      dispatch(loginFailed(error.message));
+      toast.error(error);
     }
+  }
+  useEffect(() => {
     fetchUserData();
   }, [])
   return (
@@ -33,7 +33,7 @@ const page = () => {
         <ToastContainer/>
         {!user && <Login  /> }
         {( user && user?.role == 'admin' )&& <AdminDashBoard data={user}/> } 
-        {(user && user?.role == 'user')&& <EmployeeDahBoard employee={user}/> } 
+        {(user && user?.role == 'user')&& <EmployeeDahBoard fetchUserData={fetchUserData} employee={user}/> } 
     </>
   )
 }

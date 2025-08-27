@@ -2,7 +2,7 @@
 import React from 'react';
 import { TaskList, TaskListNumber, Header } from '../index';
 
-const EmployeeDahBoard = ({ employee }) => {
+const EmployeeDahBoard = ({ employee ,fetchUserData}) => {
   if (!employee) {
     return <div>Loading...</div>;
   }
@@ -17,7 +17,7 @@ const EmployeeDahBoard = ({ employee }) => {
       <div className='px-5 md:px-20 py-2 md:py-10 bg-[#1c1c1c] h-screen w-full'>
         <Header name={employee.name} />
         <TaskListNumber data={taskCounts} />
-        <TaskList data={employee.tasks} />
+        <TaskList fetchUserData={fetchUserData} data={employee.tasks} />
       </div>
     </>
   );

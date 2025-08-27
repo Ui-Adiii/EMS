@@ -1,8 +1,7 @@
+import axios from "axios";
 import React from "react";
 
-const NewTask = ({data}) => {
-  const date = new Date(data.date);
-const formatted = date.toISOString().split("T")[0];
+const NewTask = ({data,handleSubmit,formatted}) => {
   return (
     <div className="flex-shrink-0 flex flex-col justify-between p-5 h-full w-[300px] bg-orange-400 rounded-xl">
       <div className="flex align-center justify-between ">
@@ -18,7 +17,10 @@ const formatted = date.toISOString().split("T")[0];
       </p>
       </div>
         <div className='flex justify-center  items-center mt-8'>
-            <button className='px-4 py-[5px] bg-green-600 rounded-xl text-sm font-semibold '>Accept</button>
+            <button 
+            onClick={()=> handleSubmit(data._id,"active")}
+            
+            className='px-4 py-[5px] bg-green-600 rounded-xl text-sm font-semibold '>Accept</button>
         </div>
     </div>
   );

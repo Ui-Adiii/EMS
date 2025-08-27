@@ -67,4 +67,26 @@ const createTask = async (task) => {
   }
 };
 
-export { createTask };
+
+const updatingStatus = async(id,status="failed")=>{
+  try {
+    await connectDB();
+    const task = await Task.findById(id);
+    if (!task) {
+      return {
+        message: "Task not found",
+        success: false,
+      };
+    }
+    task.status = status;
+    await task.save();
+    return {
+      message: "Task status updated successfully",
+      success: true,
+      task,
+    };
+  } catch (error) {
+    
+  }
+}
+export { createTask, updatingStatus };

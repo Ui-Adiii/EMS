@@ -9,7 +9,6 @@ export async function POST(req) {
     }
 
     const body = await req.json();
-    console.log(body);
     const response = await createTask(body);
     return NextResponse.json(response);
 }
