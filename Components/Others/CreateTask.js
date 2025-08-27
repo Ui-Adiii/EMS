@@ -2,6 +2,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { Button } from "@/Components";
 
 const CreateTask = ({ fetchUsers }) => {
   const [task, setTask] = useState({
@@ -12,6 +13,7 @@ const CreateTask = ({ fetchUsers }) => {
     category: "",
     status: "newTask",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,21 +25,27 @@ const CreateTask = ({ fetchUsers }) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    const response=await axios.post("/api/task/create", task);
-    if(response.data.success){
-      toast.success(response.data.message)
-      setTask({
-        title: "",
-        description: "",
-        date: "",
-        assignTo: "",
-        category: "",
-        status: "newTask",
-      })
-      fetchUsers();
-    }
-    else{
-      toast.error(response.data.message)
+    setLoading(true);
+    try {
+      const response = await axios.post("/api/task/create", task);
+      if(response.data.success){
+        toast.success(response.data.message);
+        setTask({
+          title: "",
+          description: "",
+          date: "",
+          assignTo: "",
+          category: "",
+          status: "newTask",
+        });
+        fetchUsers();
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to create task");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -112,9 +120,13 @@ const CreateTask = ({ fetchUsers }) => {
               className="w-full h-50 border-2 mb-5 border-gray-400 text-sm rounded-sm outline-none"
             />
 
-            <button className="text-xl w-full text-white  px-6 py-2 bg-emerald-500 rounded-full hover:bg-emerald-600 hover:cursor-pointer">
-              Create Task
-            </button>
+            <Button 
+              type="submit"
+              loading={loading}
+              className="text-xl w-full"
+            >
+              {loading ? "Creating Task..." : "Create Task"}
+            </Button>
           </div>
         </form>
       </div>

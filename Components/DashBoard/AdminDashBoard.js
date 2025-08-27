@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Header, CreateTask, AllTask } from "../index";
+import { Header, CreateTask, AllTask, Loader } from "../index";
 import axios from "axios";
 import { toast } from "react-toastify";
 import {
@@ -21,11 +21,12 @@ const AdminDashBoard = ({ data = null }) => {
         dispatch(addMultipleEmployeeSuccess(response.data.users));
       } else {
         dispatch(addMultipleEmployeeFailure(response.data.message));
-        toast.error(error);
+        toast.error(response.data.message);
       }
     } catch (error) {
-      dispatch(addMultipleEmployeeFailure(error.message));
-      toast.error(error);
+      const errorMessage = error.response?.data?.message || error.message;
+      dispatch(addMultipleEmployeeFailure(errorMessage));
+      toast.error(errorMessage);
     }
   };
   useEffect(() => {
@@ -40,9 +41,17 @@ const AdminDashBoard = ({ data = null }) => {
     <div className="h-screen w-full px-3 md:p-10">
       <Header name={data.name} />
       <CreateTask fetchUsers={fetchUsers} />
-      {
-       ( employees.length > 0) ? <AllTask employees={employees} /> : <div className="text-white font-medium text-lg md:text-2xl mt-5">No Task Summary Available</div>
-      }
+      {loading ? (
+        <div className="flex justify-center items-center mt-10">
+          <Loader size="lg" />
+        </div>
+      ) : employees.length > 0 ? (
+        <AllTask employees={employees} />
+      ) : (
+        <div className="text-white font-medium text-lg md:text-2xl mt-5">
+          No Task Summary Available
+        </div>
+      )}
       
     </div>
   );

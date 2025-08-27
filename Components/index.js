@@ -10,6 +10,10 @@ import AcceptTask from "./TaskList/AcceptTask"
 import FailedTask from "./TaskList/FailedTask"
 import CompleteTask from "./TaskList/CompleteTask"
 import NewTask from "./TaskList/NewTask"
+import Loader from "./Loader"
+import Button from "./Button"
+import PageLoader from "./PageLoader"
+
 export  {
     FailedTask,
     CompleteTask,
@@ -23,4 +27,7 @@ export  {
     TaskListNumber,
     AdminDashBoard,
     CreateTask,
+    Loader,
+    Button,
+    PageLoader,
 }

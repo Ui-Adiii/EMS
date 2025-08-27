@@ -1,10 +1,14 @@
 "use client"
 import React from 'react';
-import { TaskList, TaskListNumber, Header } from '../index';
+import { TaskList, TaskListNumber, Header, Loader } from '../index';
 
 const EmployeeDahBoard = ({ employee ,fetchUserData}) => {
   if (!employee) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <Loader size="xl" />
+      </div>
+    );
   }
   const taskCounts = {
     newTask: employee.tasks.filter(task => task.status === 'newTask').length,

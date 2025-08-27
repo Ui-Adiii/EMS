@@ -1,36 +1,210 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏢 Employee Management System (EMS)
 
-## Getting Started
+A modern, full-stack web application built with Next.js, React, Redux, and MongoDB for comprehensive employee and task management.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 🔐 Authentication & Authorization
+- **User Login System** - Secure authentication with JWT tokens
+- **Role-based Access Control** - Admin and Employee roles with different permissions
+- **Session Management** - Persistent login state with Redux
+
+### 👥 Employee Management
+- **Employee Dashboard** - Personalized view for each employee
+- **Profile Management** - Employee information and settings
+- **Task Assignment** - Assign tasks to specific employees
+
+### 📋 Task Management
+- **Task Creation** - Create new tasks with title, description, date, and category
+- **Task Assignment** - Assign tasks to employees by name
+- **Status Tracking** - Monitor task progress (New, Active, Completed, Failed)
+- **Task Categories** - Organize tasks by type (Design, Development, etc.)
+
+### 📊 Dashboard & Analytics
+- **Admin Dashboard** - Overview of all employees and tasks
+- **Employee Dashboard** - Personal task overview and statistics
+- **Task Statistics** - Count of tasks by status
+- **Real-time Updates** - Live data refresh and notifications
+
+### 🎨 User Interface
+- **Modern Design** - Clean, responsive interface built with Tailwind CSS
+- **Loading States** - Smooth loading indicators for better UX
+- **Toast Notifications** - Success and error feedback for all actions
+- **Responsive Layout** - Works seamlessly on desktop and mobile devices
+
+## 🛠️ Technology Stack
+
+### Frontend
+- **Next.js 15** - React framework with App Router
+- **React 19** - Modern React with hooks and functional components
+- **Redux Toolkit** - State management with RTK Query
+- **Tailwind CSS 4** - Utility-first CSS framework
+- **React Toastify** - Toast notification system
+
+### Backend
+- **Next.js API Routes** - Serverless API endpoints
+- **MongoDB** - NoSQL database for data persistence
+- **Mongoose** - MongoDB object modeling for Node.js
+- **JWT** - JSON Web Tokens for authentication
+- **bcrypt** - Password hashing and security
+
+### Development Tools
+- **ESLint** - Code quality and consistency
+- **PostCSS** - CSS processing and optimization
+- **Git** - Version control
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- MongoDB database
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repo-url>
+   cd EMS
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Environment Setup**
+   Create a `.env.local` file in the root directory:
+   ```env
+   MONGODB_URI=your_mongodb_connection_string
+   JWT_SECRET=your_jwt_secret_key
+   ```
+
+4. **Database Setup**
+   - Ensure MongoDB is running
+   - Update the connection string in your environment variables
+   - The application will automatically create necessary collections
+
+5. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+6. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+```
+EMS/
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   │   ├── task/          # Task-related endpoints
+│   │   └── user/          # User authentication endpoints
+│   ├── actions/           # Server actions
+│   │   ├── task/          # Task business logic
+│   │   └── user/          # User business logic
+│   ├── layout.js          # Root layout component
+│   └── page.js            # Main application page
+├── Components/             # React components
+│   ├── Auth/              # Authentication components
+│   ├── DashBoard/         # Dashboard components
+│   ├── TaskList/          # Task-related components
+│   ├── Others/            # Utility components
+│   ├── Loader.js          # Loading spinner component
+│   └── Button.js          # Reusable button component
+├── models/                 # MongoDB schemas
+│   ├── user.model.js      # User data model
+│   └── task.model.js      # Task data model
+├── store/                  # Redux store configuration
+│   ├── features/          # Redux slices
+│   └── store.js           # Store configuration
+├── utils/                  # Utility functions
+│   └── connectDB.js       # Database connection
+└── middleware/             # Next.js middleware
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Available Scripts
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📱 API Endpoints
 
-## Learn More
+### Authentication
+- `POST /api/user/login` - User login
+- `GET /api/user/me` - Get current user info
 
-To learn more about Next.js, take a look at the following resources:
+### Tasks
+- `POST /api/task/create` - Create new task
+- `PUT /api/task/update-status` - Update task status
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎯 Key Components
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Loader Component
+- Reusable loading spinner with customizable size and color
+- Used throughout the application for consistent loading states
 
-## Deploy on Vercel
+### Button Component
+- Enhanced button with loading states and variants
+- Supports primary, secondary, danger, and outline styles
+- Built-in loading indicators
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Toast Notifications
+- Consistent success/error feedback for all user actions
+- Integrated with react-toastify for smooth animations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔒 Security Features
+
+- **Password Hashing** - bcrypt for secure password storage
+- **JWT Authentication** - Secure token-based authentication
+- **Input Validation** - Server-side validation for all inputs
+- **Role-based Access** - Restricted access based on user roles
+
+## 🚧 Development Status
+
+- ✅ **Core Features** - Complete
+- ✅ **Authentication** - Complete
+- ✅ **Task Management** - Complete
+- ✅ **User Interface** - Complete
+- ✅ **Loading States** - Complete
+- ✅ **Toast Notifications** - Complete
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+If you encounter any issues or have questions:
+
+1. Check the existing issues in the repository
+2. Create a new issue with detailed information
+3. Contact the development team
+
+## 🔮 Future Enhancements
+
+- [ ] **Real-time Chat** - Employee communication system
+- [ ] **File Uploads** - Task attachments and documents
+- [ ] **Advanced Analytics** - Detailed reporting and insights
+- [ ] **Mobile App** - React Native mobile application
+- [ ] **Email Notifications** - Automated task reminders
+- [ ] **Calendar Integration** - Task scheduling and deadlines
+
+---
+
+**Built with ❤️ using Next.js, React, and MongoDB**

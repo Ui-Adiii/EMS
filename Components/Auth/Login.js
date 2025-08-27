@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { Button } from "@/Components";
 const Login = () => {
   const { loading, error, isLoggedIn } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -58,11 +59,13 @@ const Login = () => {
             type="password"
             placeholder="Enter Your Password"
           />
-          <button 
-          type="submit"
-          className="text-xl w-full text-white mt-10 px-6 py-2 bg-emerald-500 rounded-full hover:bg-emerald-600  hover:cursor-pointer">
-            Log in
-          </button>
+          <Button 
+            type="submit"
+            loading={loading}
+            className="text-xl w-full mt-10"
+          >
+            {loading ? "Logging in..." : "Log in"}
+          </Button>
         </form>
       </div>
     </div>

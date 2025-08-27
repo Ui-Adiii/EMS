@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AcceptTask, NewTask, CompleteTask, FailedTask } from "../index";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -20,9 +20,10 @@ const TaskList = ({ data, fetchUserData }) => {
       toast.error(error.message);
     }
   };
+
   return (
     <div className="taskList h-[55%] overflow-x-auto flex flex-nowrap items-center justify-start  gap-5 w-full py-5 mt-10">
-      {data.map((elem) => {
+      {[...data].reverse().map((elem) => {
         const date = new Date(elem.date);
         const formatted = date.toISOString().split("T")[0];
         if (elem.status ===   "active") {
