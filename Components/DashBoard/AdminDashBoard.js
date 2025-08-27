@@ -9,8 +9,10 @@ import {
   addMultipleEmployeeStart,
 } from "@/store/features/employeeSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
 
 const AdminDashBoard = ({ data = null }) => {
+  
   const { employees, loading, error } = useSelector((state) => state.employees);
   const dispatch = useDispatch();
   const fetchUsers = async () => {
@@ -40,6 +42,11 @@ const AdminDashBoard = ({ data = null }) => {
   return (
     <div className="h-screen w-full px-3 md:p-10">
       <Header name={data.name} />
+      <hr className=" mt-4 mb-2"/>
+      <h1 className="font-medium text-lg md:text-2xl mt-5">Want to add employee ? </h1>
+      <Link href="/user/register">
+      <span className="!text-blue-500 underline">Click Here</span>
+      </Link>
       <CreateTask fetchUsers={fetchUsers} />
       {loading ? (
         <div className="flex justify-center items-center mt-10">
