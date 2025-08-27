@@ -7,7 +7,9 @@ export async function POST(req) {
     if(!auth.success){
         return NextResponse.json({message:"you are not admin",success:false});
     }
+
     const body = await req.json();
+    console.log(body);
     const response = await createTask(body);
     return NextResponse.json(response);
 }

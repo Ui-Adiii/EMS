@@ -39,7 +39,7 @@ const AdminDashBoard = ({ data = null }) => {
   return (
     <div className="h-screen w-full px-3 md:p-10">
       <Header name={data.name} />
-      <CreateTask />
+      <CreateTask fetchUsers={fetchUsers} />
       {
        ( employees.length > 0) ? <AllTask employees={employees} /> : <div className="text-white font-medium text-lg md:text-2xl mt-5">No Task Summary Available</div>
       }

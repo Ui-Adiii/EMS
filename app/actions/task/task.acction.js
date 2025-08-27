@@ -12,7 +12,7 @@ const createTask = async (task) => {
       return { message: "Task model not available", success: false };
     }
     
-    console.log("✅ Task model found:", mongoose.models.Task);
+    console.log(task);
     
     const { title, description, date, assignTo, category, status } = task;
     if (
@@ -38,7 +38,7 @@ const createTask = async (task) => {
         success: false,
       };
     }
-    const task = await Task.create({
+    const newTask = await Task.create({
       title,
       description,
       date,
@@ -46,18 +46,18 @@ const createTask = async (task) => {
       category,
       status,
     });
-    if (!task) {
+    if (!newTask) {
       return {
         message: "Task creation failed",
         success: false,
       };
     }
-    user.tasks.push(task._id);
+    user.tasks.push(newTask._id);
     await user.save();
     return {
       message: "Task created successfully",
       success: true,
-      task,
+      task:newTask,
     };
   } catch (error) {
     return {

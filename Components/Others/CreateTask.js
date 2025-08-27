@@ -3,7 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const CreateTask = () => {
+const CreateTask = ({ fetchUsers }) => {
   const [task, setTask] = useState({
     title: "",
     description: "",
@@ -34,6 +34,7 @@ const CreateTask = () => {
         category: "",
         status: "newTask",
       })
+      fetchUsers();
     }
     else{
       toast.error(response.data.message)
