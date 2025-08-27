@@ -16,12 +16,10 @@ const page = () => {
         dispatch(loginSuccess(response.data.user));
       } else {
         dispatch(loginFailed(response.data.message));
-        toast.error(response.data.message);
       }
     } catch (error) {
       const errorMessage = error.response?.data?.message || error.message;
       dispatch(loginFailed(errorMessage));
-      toast.error(errorMessage);
     }
   }
   useEffect(() => {
