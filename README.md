@@ -76,9 +76,10 @@ A modern, full-stack web application built with Next.js, React, Redux, and Mongo
    ```
 
 3. **Environment Setup**
-   Create a `.env.local` file in the root directory:
+   Create a `.env` file in the root directory:
    ```env
    MONGODB_URI=your_mongodb_connection_string
+   DB_NAME=your_database_name
    JWT_SECRET=your_jwt_secret_key
    ```
 
@@ -139,7 +140,9 @@ EMS/
 
 ### Authentication
 - `POST /api/user/login` - User login
+- `POST /api/user/logout` - User logout
 - `GET /api/user/me` - Get current user info
+- `POST /api/user/register` - Register Employee (Only admin)
 
 ### Tasks
 - `POST /api/task/create` - Create new task
@@ -176,35 +179,5 @@ EMS/
 - ✅ **Loading States** - Complete
 - ✅ **Toast Notifications** - Complete
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-If you encounter any issues or have questions:
-
-1. Check the existing issues in the repository
-2. Create a new issue with detailed information
-3. Contact the development team
-
-## 🔮 Future Enhancements
-
-- [ ] **Real-time Chat** - Employee communication system
-- [ ] **File Uploads** - Task attachments and documents
-- [ ] **Advanced Analytics** - Detailed reporting and insights
-- [ ] **Mobile App** - React Native mobile application
-- [ ] **Email Notifications** - Automated task reminders
-- [ ] **Calendar Integration** - Task scheduling and deadlines
-
----
 
 **Built with ❤️ using Next.js, React, and MongoDB**
