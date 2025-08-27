@@ -11,9 +11,7 @@ const createTask = async (task) => {
       console.log("📊 Available models:", Object.keys(mongoose.models));
       return { message: "Task model not available", success: false };
     }
-    
-    console.log(task);
-    
+        
     const { title, description, date, assignTo, category, status } = task;
     if (
       !title ||
@@ -31,7 +29,7 @@ const createTask = async (task) => {
     ) {
       return { message: "All fields are required", success: false };
     }
-    const user = await User.findOne({ name: assignTo.toLowerCase() });
+    const user = await User.findOne({ name: assignTo.toLowerCase(),role:"user"});
     if (!user) {
       return {
         message: "User not found",
